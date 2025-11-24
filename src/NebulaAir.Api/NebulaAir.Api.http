@@ -1,0 +1,6 @@
+@NebulaAir.Api_HostAddress = http://localhost:5223
+
+GET {{NebulaAir.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
