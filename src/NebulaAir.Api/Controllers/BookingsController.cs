@@ -114,4 +114,22 @@ public class BookingsController : ControllerBase
 
         return Ok(dto);
     }
+
+    // DELETE api/v1/bookings/{id}
+    [HttpDelete("{id:int}")]
+    public async Task<IActionResult> DeleteBooking(int id)
+    {
+        var booking = await _db.Bookings.FindAsync(id);
+
+        if (booking == null)
+        {
+            return NotFound();
+        }
+
+        _db.Bookings.Remove(booking);
+        await _db.SaveChangesAsync();
+
+        // 204 No Content → borrado correcto sin cuerpo
+        return NoContent();
+    }
 }
